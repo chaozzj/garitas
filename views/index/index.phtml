@@ -1,0 +1,57 @@
+<div class="col-md-6">
+<div class="block">
+<?php if(isset($this->_garita_data->port) && count($this->_garita_data->port)):?>
+<?php for($i=0;$i<count($this->_garita_data->port);$i++):?>
+                        <div class="table-responsive" >
+                            <table class="table table-borderless table-header-bg text-center remove-margin-b">
+                                <thead>
+                                    <tr>
+                                    <th class="text-center" colspan="5"><?php echo $this->_garita_data->port[$i]->port_name;?></th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody><tr>
+                                        
+                                        <th class="text-center">Normal</th>
+                                        <th class="text-center">Ready</th>
+                                        <th class="text-center">Sentry</th>
+                                        <th class="text-center">Peatonal</th>
+                                        <th class="text-center">P. Ready</th>
+                                    </tr>
+                                    <tr class="active">
+                                        
+                                        <td>
+                                            <div class="h1 font-w700 push-10"><?php if($this->_garita_data->port[$i]->commercial_vehicle_lanes->standard_lanes->delay_minutes >0){echo $this->_garita_data->port[$i]->commercial_vehicle_lanes->standard_lanes->delay_minutes;}else{echo 'N/A';} ?></div>
+                                            <div class="h5 font-w300 text-muted">Minutos</div>
+                                        </td>
+                                        <td>
+                                            <div class="h1 font-w700 push-10"></div>
+                                            <div class="h5 font-w300 text-muted">Minutos</div>
+                                        </td>
+                                        <td>
+                                            <div class="h1 font-w700 push-10"><?php  if($this->_garita_data->port[$i]->passenger_vehicle_lanes->standard_lanes->delay_minutes>0){echo $this->_garita_data->port[$i]->passenger_vehicle_lanes->standard_lanes->delay_minutes;}else{echo 'N/A';}?></div>
+                                            <div class="h5 font-w300 text-muted">Minutos</div>
+                                        </td>
+                                        <td>
+                                            <div class="h1 font-w700 push-10"><?php if($this->_garita_data->port[$i]->pedestrian_lanes->standard_lanes->delay_minutes>0){echo $this->_garita_data->port[$i]->pedestrian_lanes->standard_lanes->delay_minutes;}else {echo 'N/A';}?></div>
+                                            <div class="h5 font-w300 text-muted">Minutos</div>
+                                        </td>
+                                        <td>
+                                            <div class="h1 font-w700 push-10"></div>
+                                            <div class="h5 font-w300 text-muted">Minutos</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <button class="btn <?php if($this->_garita_data->port[$i]->port_status=='Open') {echo 'btn-success';} else {echo 'btn-danger';}?>  " type="button"><?php if($this->_garita_data->port[$i]->port_status=='Open') {echo 'Abierto';} else {echo 'Cerrado';}?></button>
+                                        </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+
+<?php endfor;?>
+<?php endif;?>
+    </div>
+</div>
